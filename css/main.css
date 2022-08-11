@@ -1,0 +1,259 @@
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+  font-family: Rubik, sans-serif;
+}
+
+body {
+  background-color: hsl(228deg, 33%, 97%);
+  font-size: 1.6rem;
+  line-height: 1.4;
+  color: hsl(211deg, 10%, 45%);
+  display: flex;
+  justify-content: center;
+}
+
+.section {
+  margin: 5rem;
+  max-width: 70rem;
+}
+
+.item {
+  margin-bottom: 2rem;
+}
+
+.comment,
+.reply,
+.answer {
+  background-color: hsl(0deg, 0%, 100%);
+  padding: 2rem;
+  border-radius: 5px;
+  display: flex;
+}
+.comment:not(:last-child),
+.reply:not(:last-child),
+.answer:not(:last-child) {
+  margin-bottom: 2rem;
+}
+
+.replies {
+  display: flex;
+}
+.replies__border {
+  border-left: 2px solid hsl(223deg, 19%, 93%);
+  height: auto;
+  display: inline-block;
+  margin: 0 4rem;
+}
+
+.comment__vote {
+  display: flex;
+  flex-direction: column;
+  background-color: hsl(223deg, 19%, 93%);
+  align-self: flex-start;
+  border-radius: 8px;
+  align-items: center;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: hsl(238deg, 40%, 52%);
+  margin-right: 2rem;
+}
+.comment__vote--button {
+  color: hsl(239deg, 57%, 85%);
+  padding: 0.5rem 1.2rem;
+  cursor: pointer;
+}
+
+.comment__content {
+  display: flex;
+  flex-direction: column;
+}
+.comment__content--top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+.comment__content--top .info-container {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+.comment__content--top .info-container .photo {
+  height: 3rem;
+}
+.comment__content--top .info-container .photo img {
+  height: 100%;
+}
+.comment__content--top .info-container .user {
+  color: hsl(212deg, 24%, 26%);
+  font-weight: 700;
+}
+.comment__content--top .info-container .you {
+  background-color: hsl(238deg, 40%, 52%);
+  color: hsl(0deg, 0%, 100%);
+  font-size: 1.2rem;
+  padding: 1px 7px;
+  margin-right: 0.5rem;
+}
+.comment__content--top .btn-container {
+  display: flex;
+  gap: 2.5rem;
+}
+.comment__content--top .btn-container .btn-icon-box {
+  cursor: pointer;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+.comment__content--bottom .reference {
+  font-weight: 700;
+  color: hsl(238deg, 40%, 52%);
+  cursor: pointer;
+}
+
+.answer {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+.answer__img {
+  height: 4rem;
+}
+.answer__img img {
+  height: 100%;
+}
+.answer__form {
+  display: flex;
+  flex: 1;
+  align-items: flex-start;
+}
+.answer__form .input {
+  display: inline-block;
+  min-height: 8rem;
+  font-size: inherit;
+  font-style: inherit;
+  width: 100%;
+  padding: 1rem 2rem;
+  margin-right: 1.5rem;
+  border: 1px solid hsl(223deg, 19%, 93%);
+  resize: none;
+  border-radius: 10px;
+}
+
+.btn {
+  display: inline-block;
+  border: none;
+  font-weight: 700;
+}
+.btn:link, .btn:active {
+  text-decoration: none;
+}
+.btn--small {
+  font-size: 1.5rem;
+}
+.btn--blue {
+  color: hsl(238deg, 40%, 52%);
+}
+.btn--red {
+  color: hsl(358deg, 79%, 66%);
+}
+.btn--big {
+  padding: 1rem 2rem;
+  background-color: hsl(238deg, 40%, 52%);
+  color: hsl(0deg, 0%, 100%);
+  font-weight: 700;
+  border-radius: 5px;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+.btn--form {
+  padding: 1.5rem 3.4rem;
+  border-radius: 8px;
+  font-size: 1.4rem;
+}
+.btn--form-grey {
+  background-color: hsl(212deg, 24%, 26%);
+}
+.btn--form-grey:hover {
+  background-color: hsl(211deg, 10%, 45%);
+}
+.btn--form-red {
+  background-color: hsl(358deg, 79%, 66%);
+}
+.btn--form-red:hover {
+  background-color: hsl(357deg, 100%, 86%);
+}
+
+.icon {
+  -webkit-mask: url(/images/icon-reply.svg) no-repeat center;
+          mask: url(/images/icon-reply.svg) no-repeat center;
+  height: 100%;
+  width: 1.5rem;
+}
+.icon--blue {
+  background-color: hsl(238deg, 40%, 52%);
+}
+.icon--red {
+  background-color: hsl(358deg, 79%, 66%);
+}
+
+.btn-icon-box:hover .btn--blue {
+  color: hsl(239deg, 57%, 85%);
+}
+
+.btn-icon-box:hover .icon--blue {
+  background-color: hsl(239deg, 57%, 85%);
+}
+
+.btn-icon-box:hover .btn--red {
+  color: hsl(357deg, 100%, 86%);
+}
+
+.btn-icon-box:hover .icon--red {
+  background-color: hsl(357deg, 100%, 86%);
+}
+
+.modal {
+  background-color: rgba(0, 0, 0, 0.425);
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.modal__window {
+  max-width: 40rem;
+  background-color: hsl(0deg, 0%, 100%);
+  padding: 3.5rem;
+  border-radius: 1rem;
+}
+.modal__header {
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: hsl(212deg, 24%, 26%);
+  margin-bottom: 2rem;
+}
+.modal__text {
+  font-size: 1.7rem;
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+.modal .modal__btn-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.hidden {
+  opacity: 0;
+  visibility: hidden;
+}/*# sourceMappingURL=main.css.map */

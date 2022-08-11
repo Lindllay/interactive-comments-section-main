@@ -1,0 +1,73 @@
+.btn {
+	display: inline-block;
+	border: none;
+	font-weight: 700;
+
+	&:link,
+	&:active {
+		text-decoration: none;
+	}
+
+	&--small {
+		font-size: 1.5rem;
+	}
+	&--blue {
+		color: $color-moderate-blue;
+	}
+
+	&--red {
+		color: $color-soft-red;
+	}
+	&--big {
+		padding: 1rem 2rem;
+		background-color: $color-moderate-blue;
+		color: $color-white;
+		font-weight: 700;
+		border-radius: 5px;
+		cursor: pointer;
+		text-transform: uppercase;
+	}
+	&--form {
+		padding: 1.5rem 3.4rem;
+		border-radius: 8px;
+		font-size: 1.4rem;
+		&-grey {
+			background-color: $color-dark-blue;
+			&:hover {
+				background-color: $color-grayish-blue;
+			}
+		}
+		&-red {
+			background-color: $color-soft-red;
+			&:hover {
+				background-color: $color-pale-red;
+			}
+		}
+	}
+}
+
+.icon {
+	mask: url(/images/icon-reply.svg) no-repeat center;
+	height: 100%;
+	width: 1.5rem;
+
+	&--blue {
+		background-color: $color-moderate-blue;
+	}
+	&--red {
+		background-color: $color-soft-red;
+	}
+}
+
+.btn-icon-box:hover .btn--blue {
+	color: $color-light-grayish-blue;
+}
+.btn-icon-box:hover .icon--blue {
+	background-color: $color-light-grayish-blue;
+}
+.btn-icon-box:hover .btn--red {
+	color: $color-pale-red;
+}
+.btn-icon-box:hover .icon--red {
+	background-color: $color-pale-red;
+}
