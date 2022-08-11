@@ -19,7 +19,7 @@
 		color: $color-soft-red;
 	}
 	&--big {
-		padding: 1rem 2rem;
+		padding: 1.2rem 2.4rem;
 		background-color: $color-moderate-blue;
 		color: $color-white;
 		font-weight: 700;
@@ -47,9 +47,20 @@
 }
 
 .icon {
-	mask: url(/images/icon-reply.svg) no-repeat center;
 	height: 100%;
 	width: 1.5rem;
+
+	&--delete {
+		mask: url(../images/icon-delete.svg) no-repeat center;
+	}
+
+	&--reply {
+		mask: url(/images/icon-reply.svg) no-repeat center;
+	}
+
+	&--edit {
+		mask: url(/images/icon-edit.svg) no-repeat center;
+	}
 
 	&--blue {
 		background-color: $color-moderate-blue;

@@ -61,7 +61,7 @@ body {
   align-self: flex-start;
   border-radius: 8px;
   align-items: center;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 700;
   color: hsl(238deg, 40%, 52%);
   margin-right: 2rem;
@@ -75,6 +75,7 @@ body {
 .comment__content {
   display: flex;
   flex-direction: column;
+  width: 100%;
 }
 .comment__content--top {
   display: flex;
@@ -138,7 +139,6 @@ body {
 }
 .answer__form .input {
   display: inline-block;
-  min-height: 8rem;
   font-size: inherit;
   font-style: inherit;
   width: 100%;
@@ -147,6 +147,15 @@ body {
   border: 1px solid hsl(223deg, 19%, 93%);
   resize: none;
   border-radius: 10px;
+  min-height: 8rem;
+}
+
+.vertical {
+  flex-direction: column;
+}
+.vertical .btn {
+  align-self: flex-end;
+  margin-top: 1.5rem;
 }
 
 .btn {
@@ -167,7 +176,7 @@ body {
   color: hsl(358deg, 79%, 66%);
 }
 .btn--big {
-  padding: 1rem 2rem;
+  padding: 1.2rem 2.4rem;
   background-color: hsl(238deg, 40%, 52%);
   color: hsl(0deg, 0%, 100%);
   font-weight: 700;
@@ -194,10 +203,20 @@ body {
 }
 
 .icon {
-  -webkit-mask: url(/images/icon-reply.svg) no-repeat center;
-          mask: url(/images/icon-reply.svg) no-repeat center;
   height: 100%;
   width: 1.5rem;
+}
+.icon--delete {
+  -webkit-mask: url(../images/icon-delete.svg) no-repeat center;
+          mask: url(../images/icon-delete.svg) no-repeat center;
+}
+.icon--reply {
+  -webkit-mask: url(/images/icon-reply.svg) no-repeat center;
+          mask: url(/images/icon-reply.svg) no-repeat center;
+}
+.icon--edit {
+  -webkit-mask: url(/images/icon-edit.svg) no-repeat center;
+          mask: url(/images/icon-edit.svg) no-repeat center;
 }
 .icon--blue {
   background-color: hsl(238deg, 40%, 52%);

@@ -29,7 +29,7 @@
 	align-self: flex-start;
 	border-radius: 8px;
 	align-items: center;
-	font-size: 1.8rem;
+	font-size: 1.6rem;
 	font-weight: 700;
 	color: $color-moderate-blue;
 	margin-right: 2rem;
@@ -42,6 +42,7 @@
 .comment__content {
 	display: flex;
 	flex-direction: column;
+	width: 100%;
 
 	&--top {
 		display: flex;
@@ -108,12 +109,12 @@
 	}
 	&__form {
 		display: flex;
+
 		flex: 1;
 		align-items: flex-start;
 
 		.input {
 			display: inline-block;
-			min-height: 8rem;
 			font-size: inherit;
 			font-style: inherit;
 			width: 100%;
@@ -122,6 +123,14 @@
 			border: 1px solid $color-light-gray;
 			resize: none;
 			border-radius: 10px;
+			min-height: 8rem;
 		}
+	}
+}
+.vertical {
+	flex-direction: column;
+	.btn {
+		align-self: flex-end;
+		margin-top: 1.5rem;
 	}
 }
