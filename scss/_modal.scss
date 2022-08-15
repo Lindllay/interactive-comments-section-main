@@ -6,12 +6,18 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
+	z-index: 99;
 
 	&__window {
 		max-width: 40rem;
 		background-color: $color-white;
 		padding: 3.5rem;
 		border-radius: 1rem;
+		margin: 1.5rem;
+
+		@media (max-width: 38em) {
+			padding: 2.5rem;
+		}
 	}
 
 	&__content {
@@ -30,6 +36,7 @@
 	}
 	.modal__btn-container {
 		display: flex;
-		justify-content: space-between;
+		justify-content: center;
+		gap: 1.5rem;
 	}
 }

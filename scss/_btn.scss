@@ -26,11 +26,25 @@
 		border-radius: 5px;
 		cursor: pointer;
 		text-transform: uppercase;
+
+		&:hover {
+			background-color: $color-light-grayish-blue;
+		}
+
+		@media (max-width: 38em) {
+			align-self: flex-end;
+			margin-top: 1.5rem;
+		}
 	}
 	&--form {
 		padding: 1.5rem 3.4rem;
 		border-radius: 8px;
 		font-size: 1.4rem;
+		@media (max-width: 38em) {
+			padding: 1.5rem 2rem;
+			font-size: 1.5rem;
+		}
+
 		&-grey {
 			background-color: $color-dark-blue;
 			&:hover {

@@ -8,9 +8,39 @@
 	padding: 2rem;
 	border-radius: 5px;
 	display: flex;
+	position: relative;
 
 	&:not(:last-child) {
 		margin-bottom: 2rem;
+	}
+
+	@media (max-width: 38em) {
+		flex-direction: column;
+		padding: 1.5rem;
+	}
+
+	.btn-container {
+		display: flex;
+		gap: 2.5rem;
+		align-self: flex-start;
+		position: absolute;
+		right: 2.5rem;
+		top: 2.5rem;
+
+		@media (max-width: 38em) {
+			bottom: 2.2rem;
+			top: auto;
+		}
+
+		.btn-icon-box {
+			display: flex;
+			cursor: pointer;
+			gap: 0.5rem;
+
+			.icon--reply {
+				// height: 2.5rem;
+			}
+		}
 	}
 }
 .replies {
@@ -20,6 +50,10 @@
 		height: auto;
 		display: inline-block;
 		margin: 0 4rem;
+
+		@media (max-width: 38em) {
+			margin: 0 1.5rem;
+		}
 	}
 }
 .comment__vote {
@@ -33,6 +67,13 @@
 	font-weight: 700;
 	color: $color-moderate-blue;
 	margin-right: 2rem;
+
+	@media (max-width: 38em) {
+		flex-direction: row;
+		order: 2;
+		margin-top: 2rem;
+	}
+
 	&--button {
 		color: $color-light-grayish-blue;
 		padding: 0.5rem 1.2rem;
@@ -75,17 +116,6 @@
 				margin-right: 0.5rem;
 			}
 		}
-
-		.btn-container {
-			display: flex;
-			gap: 2.5rem;
-			.btn-icon-box {
-				cursor: pointer;
-				display: flex;
-				gap: 0.5rem;
-				align-items: center;
-			}
-		}
 	}
 	&--bottom {
 		.reference {
@@ -102,6 +132,12 @@
 	gap: 1.5rem;
 
 	&__img {
+		@media (max-width: 38em) {
+			position: absolute;
+			bottom: 1.5rem;
+			left: 1.5rem;
+		}
+
 		height: 4rem;
 		img {
 			height: 100%;
@@ -112,6 +148,11 @@
 
 		flex: 1;
 		align-items: flex-start;
+
+		@media (max-width: 38em) {
+			flex-direction: column;
+			width: 100%;
+		}
 
 		.input {
 			display: inline-block;
