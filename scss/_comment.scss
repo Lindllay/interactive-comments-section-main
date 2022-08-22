@@ -2,7 +2,6 @@
 	margin-bottom: 2rem;
 }
 .comment,
-.reply,
 .answer {
 	background-color: $color-white;
 	padding: 2rem;
@@ -10,9 +9,7 @@
 	display: flex;
 	position: relative;
 
-	&:not(:last-child) {
-		margin-bottom: 2rem;
-	}
+	margin-bottom: 2rem;
 
 	@media (max-width: 38em) {
 		flex-direction: column;
@@ -36,13 +33,10 @@
 			display: flex;
 			cursor: pointer;
 			gap: 0.5rem;
-
-			.icon--reply {
-				// height: 2.5rem;
-			}
 		}
 	}
 }
+
 .replies {
 	display: flex;
 	&__border {
@@ -118,6 +112,7 @@
 		}
 	}
 	&--bottom {
+		word-break: break-all;
 		.reference {
 			font-weight: 700;
 			color: $color-moderate-blue;
@@ -165,6 +160,8 @@
 			resize: none;
 			border-radius: 10px;
 			min-height: 8rem;
+			resize: none;
+			overflow: hidden;
 		}
 	}
 }
@@ -174,4 +171,8 @@
 		align-self: flex-end;
 		margin-top: 1.5rem;
 	}
+}
+
+.replies__container {
+	width: 100%;
 }

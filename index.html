@@ -62,14 +62,19 @@
 					</div>
 					<form class="answer__form">
 						<textarea
-							type="text"
 							placeholder="Add a comment..."
 							class="input"
 						></textarea>
-						<button class="btn btn--big">Reply</button>
+						<button class="btn btn--big btn--reply">Reply</button>
 					</form>
 				</div>
 			</div>
+      <div class="replies">
+        <div class="replies__border"></div>
+        <div class="replies__container">
+          
+        </div>
+      </div>
 
 			<div class="item">
 				<div class="comment answer-parent">
@@ -122,14 +127,14 @@
 							placeholder="Add a comment..."
 							class="input"
 						></textarea>
-						<button class="btn btn--big">Reply</button>
+						<button class="btn btn--big btn--reply">Reply</button>
 					</form>
 				</div>
 			</div>
 				<div class="replies">
 					<div class="replies__border"></div>
 					<div class="replies__container">
-						<div class="reply answer-parent">
+						<div class="comment answer-parent">
 							<div class="comment__vote">
 								<span class="comment__vote--button">+</span
 								><span class="comment__vote--rating">4</span
@@ -183,11 +188,11 @@
                   placeholder="Add a comment..."
                   class="input"
                 ></textarea>
-                <button class="btn btn--big">Reply</button>
+                <button class="btn btn--big btn--reply">Reply</button>
               </form>
             </div>
             
-						<div class="reply answer-parent">
+						<div class="comment answer-parent">
 							<div class="comment__vote">
 								<span class="comment__vote--button">+</span
 								><span class="comment__vote--rating">2</span
@@ -216,14 +221,7 @@
 									to jump ahead but lay a solid foundation
 									first.
 								</div>
-								<!-- <form class="answer__form vertical">
-									<textarea
-										type="text"
-										placeholder="Add a comment..."
-										class="input"
-									></textarea>
-									<button class="btn btn--big">Update</button>
-								</form> -->
+							
 							</div>
 							<div class="btn-container">
 								<div class="btn-icon-box delete-box">
@@ -234,7 +232,7 @@
 										>Delete</a
 									>
 								</div>
-								<div class="btn-icon-box">
+								<div class="btn-icon-box edit-box">
 									<div
 										class="icon icon--blue icon--edit"
 									></div>
@@ -260,8 +258,10 @@
 						type="text"
 						placeholder="Add a comment..."
 						class="input"
+            maxlength="10"
+            
 					></textarea>
-					<button class="btn btn--big">Send</button>
+					<button class="btn btn--big btn--send" type="submit" value="check">Send</button>
 				</form>
 			</div>
 		</section>

@@ -31,29 +31,22 @@ body {
 }
 
 .comment,
-.reply,
 .answer {
   background-color: hsl(0deg, 0%, 100%);
   padding: 2rem;
   border-radius: 5px;
   display: flex;
   position: relative;
-}
-.comment:not(:last-child),
-.reply:not(:last-child),
-.answer:not(:last-child) {
   margin-bottom: 2rem;
 }
 @media (max-width: 38em) {
   .comment,
-.reply,
 .answer {
     flex-direction: column;
     padding: 1.5rem;
   }
 }
 .comment .btn-container,
-.reply .btn-container,
 .answer .btn-container {
   display: flex;
   gap: 2.5rem;
@@ -64,19 +57,18 @@ body {
 }
 @media (max-width: 38em) {
   .comment .btn-container,
-.reply .btn-container,
 .answer .btn-container {
     bottom: 2.2rem;
     top: auto;
   }
 }
 .comment .btn-container .btn-icon-box,
-.reply .btn-container .btn-icon-box,
 .answer .btn-container .btn-icon-box {
   display: flex;
   cursor: pointer;
   gap: 0.5rem;
 }
+
 .replies {
   display: flex;
 }
@@ -150,6 +142,9 @@ body {
   padding: 1px 7px;
   margin-right: 0.5rem;
 }
+.comment__content--bottom {
+  word-break: break-all;
+}
 .comment__content--bottom .reference {
   font-weight: 700;
   color: hsl(238deg, 40%, 52%);
@@ -196,6 +191,8 @@ body {
   resize: none;
   border-radius: 10px;
   min-height: 8rem;
+  resize: none;
+  overflow: hidden;
 }
 
 .vertical {
@@ -204,6 +201,10 @@ body {
 .vertical .btn {
   align-self: flex-end;
   margin-top: 1.5rem;
+}
+
+.replies__container {
+  width: 100%;
 }
 
 .btn {

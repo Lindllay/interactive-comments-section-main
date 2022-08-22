@@ -2,38 +2,294 @@ const modal = document.querySelector(".modal");
 const overlay = document.querySelector(".overlay");
 const btnModalCancel = document.querySelector(".btn--form-grey");
 const btnModalDelete = document.querySelector(".btn--form-red");
-const btnCommentReply = document.querySelectorAll(".reply-box");
-const btnCommentDelete = document.querySelectorAll(".delete-box");
+const btnCommentEdit = document.querySelectorAll(".edit-box");
+const textareas = document.querySelectorAll(".input");
+const itemContainer = document.querySelector(".section");
+const currentUser = `juliusomo`;
 
-//////////////// MODAL ////////////////
+//// Auto-resizing textarea
+const inputFocus = function (input) {
+	const end = input.value.length;
+	input.setSelectionRange(end, end);
+	input.focus();
+	input.style.height = "auto";
+	input.style.height = input.scrollHeight + "px";
+};
 
-btnCommentDelete.forEach((btn) =>
-	btn.addEventListener("click", function () {
+itemContainer.addEventListener("input", function (e) {
+	inputFocus(e.target);
+});
+
+//////////////// HANDLE CLICK EVENTS //////////////
+document.addEventListener("click", function (e) {
+	e.preventDefault();
+
+	const btnSend = e.target.classList.contains("btn--send");
+	const btnReply = e.target.classList.contains("btn--reply");
+
+	// /////////// ADD NEW COMMENT OR REPLY //////////
+	if (btnReply || btnSend) {
+		const text = e.target.previousElementSibling.value;
+		const form = e.target.closest(".answer");
+
+		const newItemMarkup = `<div class="item">
+        <div class="comment answer-parent">
+            <div class="comment__vote">
+                <span class="comment__vote--button">+</span
+                ><span class="comment__vote--rating">0</span
+                ><span class="comment__vote--button">–</span>
+            </div>
+            <div class="comment__content">
+                <div class="comment__content--top">
+                    <div class="info-container">
+                        <div class="photo">
+                            <img
+                                src="/images/avatars/image-juliusomo.png"
+                                alt=""
+                            />
+                        </div>
+                        <span class="user">juliusomo</span>
+                        <span class="time">now</span>
+                    </div>
+                </div>
+                <div class="comment__content--bottom">
+                    ${text}
+                </div>
+            </div>
+            <div class="btn-container">
+				<div class="btn-icon-box delete-box">
+					<div
+						class="icon icon--red icon--delete"
+					></div>
+					<a href="#" class="btn btn--small btn--red"
+						>Delete</a
+					>
+				</div>
+				<div class="btn-icon-box edit-box">
+					<div
+						class="icon icon--blue icon--edit"
+					></div>
+					<a href="#" class="btn btn--small btn--blue"
+						>Edit</a
+					>
+				</div>
+			</div>
+        </div>
+        <!-- Reply form -->
+<div class="answer display-none">
+            <div class="answer__img">
+                <img
+                    src="/images/avatars/image-juliusomo.png"
+                    alt=""
+                    class="answer__avatar--img"
+                />
+            </div>
+            <form class="answer__form">
+                <textarea
+                    type="text"
+                    placeholder="Add a comment..."
+                    class="input"
+                ></textarea>
+                <button class="btn btn--big btn--reply">Reply</button>
+            </form>
+        </div>
+    </div>
+<div class="replies">
+<div class="replies__border"></div>
+<div class="replies__container"></div>
+</div>`;
+		const newReplyMarkup = `<div class="comment answer-parent">
+        <div class="comment__vote">
+          <span class="comment__vote--button">+</span
+          ><span class="comment__vote--rating">2</span
+          ><span class="comment__vote--button">–</span>
+        </div>
+        <div class="comment__content">
+          <div class="comment__content--top">
+            <div class="info-container">
+              <div class="photo">
+                <img
+                  src="/images/avatars/image-juliusomo.png"
+                  alt=""
+                />
+              </div>
+
+              <span class="user">juliusomo</span
+              ><span class="you">you</span>
+              <span class="time">2 days ago</span>
+            </div>
+          </div>
+          <div class="comment__content--bottom">
+            <span class="reference"></span>
+            ${text}
+            
+           
+          </div>
+          <!-- <form class="answer__form vertical">
+            <textarea
+              type="text"
+              placeholder="Add a comment..."
+              class="input"
+            ></textarea>
+            <button class="btn btn--big btn--reply">Update</button>
+          </form> -->
+        </div>
+        <div class="btn-container">
+          <div class="btn-icon-box delete-box">
+            <div
+              class="icon icon--red icon--delete"
+            ></div>
+            <a href="#" class="btn btn--small btn--red"
+              >Delete</a
+            >
+          </div>
+          <div class="btn-icon-box edit-box">
+            <div
+              class="icon icon--blue icon--edit"
+            ></div>
+            <a href="#" class="btn btn--small btn--blue"
+              >Edit</a
+            >
+          </div>
+        </div>
+      </div>`;
+
+		const formMarkup = `<div class="answer ${
+			btnReply ? "display-none" : ""
+		}">
+    <div class="answer__img">
+        <img
+            src="/images/avatars/image-juliusomo.png"
+            alt=""
+            class="answer__avatar--img"
+        />
+    </div>
+    <form class="answer__form">
+        <textarea
+            type="text"
+            placeholder="Add a comment..."
+            class="input"
+            ></textarea>
+            <button class="btn btn--big btn--send">Send</button>
+            </form>
+            </div>`;
+
+		// IF SEND BUTTON CLICKED (NEW COMMENT)
+		if (btnSend) {
+			itemContainer.insertAdjacentHTML("beforeend", newItemMarkup);
+			form.remove();
+			itemContainer.insertAdjacentHTML("beforeend", formMarkup);
+		}
+
+		// IF BIG REPLY BUTTON CLICKED on comment
+		if (e.target.closest(".item")) {
+			const repliesContainer = e.target
+				.closest(".item")
+				.nextElementSibling.querySelector(".replies__container");
+
+			repliesContainer.insertAdjacentHTML("beforeend", newReplyMarkup);
+			form.classList.toggle("display-none");
+			form.querySelector(".input").value = "";
+			repliesContainer.insertAdjacentHTML("beforeend", formMarkup);
+
+			e.target.closest(".item").querySelector(".input").style.height =
+				"8rem";
+		}
+		// IF BIG REPLY BUTTON CLICKED on reply
+		if (e.target.closest(".replies__container")) {
+			const repliesContainer = e.target.closest(".replies__container");
+			const input = repliesContainer.querySelector(".input");
+
+			repliesContainer.insertAdjacentHTML("beforeend", newReplyMarkup);
+			form.classList.toggle("display-none");
+			form.querySelector(".input").value = "";
+			repliesContainer.insertAdjacentHTML("beforeend", formMarkup);
+
+			input.style.height = "8rem";
+		}
+	}
+
+	//////////////// MODAL ////////////////
+	if (e.target.parentElement.classList.contains("delete-box")) {
 		modal.classList.remove("hidden");
 		overlay.classList.remove("hidden");
-	})
-);
+	}
+	if (e.target === overlay || e.target === btnModalCancel) {
+		overlay.classList.add("hidden");
+		modal.classList.add("hidden");
+	}
 
-overlay.addEventListener("click", function () {
-	overlay.classList.add("hidden");
-	modal.classList.add("hidden");
-});
+	//////////////// EDIT CONTENT /////////////
 
-btnModalCancel.addEventListener("click", function () {
-	modal.classList.add("hidden");
-	overlay.classList.add("hidden");
-});
+	if (e.target.parentElement.classList.contains("edit-box")) {
+		const textbox = e.target
+			.closest(".answer-parent")
+			.querySelector(".comment__content--bottom");
 
-//////////// REPLY SHOW/HIDE FORM //////////////
+		if (textbox) {
+			const text = textbox.textContent
+				.replaceAll("\t", "")
+				.replaceAll("\n", " ")
+				.trim();
 
-btnCommentReply.forEach((btn) =>
-	btn.addEventListener("click", function (e) {
-		e.preventDefault();
+			const formMarkup = `<form class="answer__form vertical">
+	    		    <textarea
+	    		        type="text"
+	    		        placeholder="Add a comment..."
+	    		        class="input"
+	    		    >${text}</textarea>
+	    		    <button class="btn btn--big btn--update">Update</button>
+	    		</form>`;
 
-		e.currentTarget
+			//// Switch between old comment and answer form, filled with text
+			textbox.insertAdjacentHTML("afterend", formMarkup);
+			textbox.remove();
+
+			inputFocus(
+				e.target.closest(".answer-parent").querySelector(".input")
+			);
+		}
+	}
+	if (e.target.classList.contains("btn--update")) {
+		const input = e.target
+			.closest(".answer-parent")
+			.querySelector(".input");
+		const inputValue = input.value;
+		const btn = e.target;
+
+		const textboxMarkup = `<div class="comment__content--bottom">
+        <span class="reference"></span>
+        ${inputValue}
+    </div>`;
+
+		input.insertAdjacentHTML("afterend", textboxMarkup);
+
+		input.remove();
+		btn.remove();
+	}
+
+	if (e.target.parentElement?.classList.contains("reply-box")) {
+		e.target
 			.closest(".answer-parent")
 			.nextElementSibling.classList.toggle("display-none");
-	})
-);
+	}
 
-//////// EDIT COMMENT /////////
+	////// ADD POINTS to COMMENT or REPLY
+	if (e.target.classList.contains("comment__vote--button")) {
+		const btnPlus = e.target.parentElement.firstElementChild;
+		const btnMinus = e.target.parentElement.lastElementChild;
+
+		let rating = e.target.parentElement.querySelector(
+			".comment__vote--rating"
+		);
+		const btn = e.target.textContent;
+		// console.log(rating);
+
+		if (e.target === btnPlus) {
+			rating.textContent++;
+		}
+		if (e.target === btnMinus) {
+			rating.textContent--;
+		}
+	}
+});
