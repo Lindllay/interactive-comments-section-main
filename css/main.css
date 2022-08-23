@@ -142,9 +142,6 @@ body {
   padding: 1px 7px;
   margin-right: 0.5rem;
 }
-.comment__content--bottom {
-  word-break: break-all;
-}
 .comment__content--bottom .reference {
   font-weight: 700;
   color: hsl(238deg, 40%, 52%);

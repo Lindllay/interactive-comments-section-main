@@ -15,7 +15,7 @@
 	</head>
 	<body>
 		<section class="section">
-			<div class="item">
+			<!-- <div class="item">
 				<div class="comment answer-parent">
 					<div class="comment__vote">
 						<span class="comment__vote--button">+</span
@@ -51,8 +51,8 @@
 						</div>
 					</div>
 				</div>
-				<!-- Reply form -->
-        <div class="answer display-none">
+			
+				<div class="answer display-none">
 					<div class="answer__img">
 						<img
 							src="/images/avatars/image-juliusomo.png"
@@ -64,17 +64,16 @@
 						<textarea
 							placeholder="Add a comment..."
 							class="input"
+							maxlength="255"
 						></textarea>
 						<button class="btn btn--big btn--reply">Reply</button>
 					</form>
 				</div>
 			</div>
-      <div class="replies">
-        <div class="replies__border"></div>
-        <div class="replies__container">
-          
-        </div>
-      </div>
+			<div class="replies">
+				<div class="replies__border"></div>
+				<div class="replies__container"></div>
+			</div>
 
 			<div class="item">
 				<div class="comment answer-parent">
@@ -112,8 +111,8 @@
 						</div>
 					</div>
 				</div>
-        <!-- Reply form -->
-        <div class="answer display-none">
+
+				<div class="answer display-none">
 					<div class="answer__img">
 						<img
 							src="/images/avatars/image-juliusomo.png"
@@ -126,126 +125,121 @@
 							type="text"
 							placeholder="Add a comment..."
 							class="input"
+							maxlength="255"
 						></textarea>
 						<button class="btn btn--big btn--reply">Reply</button>
 					</form>
 				</div>
 			</div>
-				<div class="replies">
-					<div class="replies__border"></div>
-					<div class="replies__container">
-						<div class="comment answer-parent">
-							<div class="comment__vote">
-								<span class="comment__vote--button">+</span
-								><span class="comment__vote--rating">4</span
-								><span class="comment__vote--button">–</span>
-							</div>
-							<div class="comment__content">
-								<div class="comment__content--top">
-									<div class="info-container">
-										<div class="photo">
-											<img
-												src="/images/avatars/image-ramsesmiron.png"
-												alt=""
-											/>
-										</div>
-										<span class="user">ramsesmiron</span>
-										<span class="time">1 week ago</span>
+			<div class="replies">
+				<div class="replies__border"></div>
+				<div class="replies__container">
+					<div class="comment answer-parent">
+						<div class="comment__vote">
+							<span class="comment__vote--button">+</span
+							><span class="comment__vote--rating">4</span
+							><span class="comment__vote--button">–</span>
+						</div>
+						<div class="comment__content">
+							<div class="comment__content--top">
+								<div class="info-container">
+									<div class="photo">
+										<img
+											src="/images/avatars/image-ramsesmiron.png"
+											alt=""
+										/>
 									</div>
-								</div>
-								<div class="comment__content--bottom">
-									<span class="reference">@maxblagun</span>
-									I couldn't agree more with this. Everything
-									moves so fast and it always seems like
-									everyone knows the newest library/framework.
-									But the fundamentals are what stay constant.
+									<span class="user">ramsesmiron</span>
+									<span class="time">1 week ago</span>
 								</div>
 							</div>
-							<div class="btn-container">
-								<div class="btn-icon-box reply-box">
-									<div
-										class="icon icon--blue icon--reply"
-									></div>
-									<a href="#" class="btn btn--small btn--blue"
-										>Reply</a
-									>
-								</div>
+							<div class="comment__content--bottom">
+								<span class="reference">@maxblagun</span>
+								I couldn't agree more with this. Everything
+								moves so fast and it always seems like everyone
+								knows the newest library/framework. But the
+								fundamentals are what stay constant.
 							</div>
 						</div>
-            
-						<!-- Reply form -->
-            <div class="answer display-none">
-              <div class="answer__img">
-                <img
-                  src="/images/avatars/image-juliusomo.png"
-                  alt=""
-                  class="answer__avatar--img"
-                />
-              </div>
-              <form class="answer__form">
-                <textarea
-                  type="text"
-                  placeholder="Add a comment..."
-                  class="input"
-                ></textarea>
-                <button class="btn btn--big btn--reply">Reply</button>
-              </form>
-            </div>
-            
-						<div class="comment answer-parent">
-							<div class="comment__vote">
-								<span class="comment__vote--button">+</span
-								><span class="comment__vote--rating">2</span
-								><span class="comment__vote--button">–</span>
+						<div class="btn-container">
+							<div class="btn-icon-box reply-box">
+								<div class="icon icon--blue icon--reply"></div>
+								<a href="#" class="btn btn--small btn--blue"
+									>Reply</a
+								>
 							</div>
-							<div class="comment__content">
-								<div class="comment__content--top">
-									<div class="info-container">
-										<div class="photo">
-											<img
-												src="/images/avatars/image-juliusomo.png"
-												alt=""
-											/>
-										</div>
+						</div>
+					</div>
 
-										<span class="user">juliusomo</span
-										><span class="you">you</span>
-										<span class="time">2 days ago</span>
+					<div class="answer display-none">
+						<div class="answer__img">
+							<img
+								src="/images/avatars/image-juliusomo.png"
+								alt=""
+								class="answer__avatar--img"
+							/>
+						</div>
+						<form class="answer__form">
+							<textarea
+								type="text"
+								placeholder="Add a comment..."
+								class="input"
+								maxlength="255"
+							></textarea>
+							<button class="btn btn--big btn--reply">
+								Reply
+							</button>
+						</form>
+					</div>
+
+					<div class="comment answer-parent">
+						<div class="comment__vote">
+							<span class="comment__vote--button">+</span
+							><span class="comment__vote--rating">2</span
+							><span class="comment__vote--button">–</span>
+						</div>
+						<div class="comment__content">
+							<div class="comment__content--top">
+								<div class="info-container">
+									<div class="photo">
+										<img
+											src="/images/avatars/image-juliusomo.png"
+											alt=""
+										/>
 									</div>
+
+									<span class="user">juliusomo</span
+									><span class="you">you</span>
+									<span class="time">2 days ago</span>
 								</div>
-								<div class="comment__content--bottom">
-									<span class="reference"> @ramsesmiron</span>
-									If you're still new, I'd recommend focusing
-									on the fundamentals of HTML, CSS, and JS
-									before considering React. It's very tempting
-									to jump ahead but lay a solid foundation
-									first.
-								</div>
-							
 							</div>
-							<div class="btn-container">
-								<div class="btn-icon-box delete-box">
-									<div
-										class="icon icon--red icon--delete"
-									></div>
-									<a href="#" class="btn btn--small btn--red"
-										>Delete</a
-									>
-								</div>
-								<div class="btn-icon-box edit-box">
-									<div
-										class="icon icon--blue icon--edit"
-									></div>
-									<a href="#" class="btn btn--small btn--blue"
-										>Edit</a
-									>
-								</div>
+							<div class="comment__content--bottom">
+								<span class="reference"> @ramsesmiron</span>
+								If you're still new, I'd recommend focusing on
+								the fundamentals of HTML, CSS, and JS before
+								considering React. It's very tempting to jump
+								ahead but lay a solid foundation first.
+							</div>
+						</div>
+						<div class="btn-container">
+							<div class="btn-icon-box delete-box">
+								<div class="icon icon--red icon--delete"></div>
+								<a href="#" class="btn btn--small btn--red"
+									>Delete</a
+								>
+							</div>
+							<div class="btn-icon-box edit-box">
+								<div class="icon icon--blue icon--edit"></div>
+								<a href="#" class="btn btn--small btn--blue"
+									>Edit</a
+								>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="answer">
+      -->
+			<!-- <div class="answer">
 				<div class="answer__img">
 					<img
 						src="/images/avatars/image-juliusomo.png"
@@ -258,12 +252,17 @@
 						type="text"
 						placeholder="Add a comment..."
 						class="input"
-            maxlength="10"
-            
+						maxlength="255"
 					></textarea>
-					<button class="btn btn--big btn--send" type="submit" value="check">Send</button>
+					<button
+						class="btn btn--big btn--send"
+						type="submit"
+						value="check"
+					>
+						Send
+					</button>
 				</form>
-			</div>
+			</div> -->
 		</section>
 		<div class="overlay hidden"></div>
 		<div class="modal hidden">

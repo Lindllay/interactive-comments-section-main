@@ -2,10 +2,210 @@ const modal = document.querySelector(".modal");
 const overlay = document.querySelector(".overlay");
 const btnModalCancel = document.querySelector(".btn--form-grey");
 const btnModalDelete = document.querySelector(".btn--form-red");
-const btnCommentEdit = document.querySelectorAll(".edit-box");
-const textareas = document.querySelectorAll(".input");
 const itemContainer = document.querySelector(".section");
-const currentUser = `juliusomo`;
+
+const renderData = function (data) {
+	data.comments.forEach((comment) => {
+		let replyMarkup = "";
+		comment.replies.forEach((reply) => {
+			replyMarkup += `<div class="comment answer-parent">
+            <div class="comment__vote">
+              <span class="comment__vote--button">+</span
+              ><span class="comment__vote--rating">${reply.score}</span
+              ><span class="comment__vote--button">–</span>
+            </div>
+            <div class="comment__content">
+              <div class="comment__content--top">
+                <div class="info-container">
+                  <div class="photo">
+                    <img
+                      src="${reply.user.image.png}"
+                      alt=""
+                    />
+                  </div>
+        
+                  <span class="user">${reply.user.username}</span
+                  >${
+						reply.user.username === data.currentUser.username
+							? `<span class="you">you</span>`
+							: ""
+					}
+                  <span class="time">${reply.createdAt}</span>
+                </div>
+              </div>
+              <div class="comment__content--bottom">
+                <span class="reference"></span>
+                ${reply.content}
+              </div>
+              <!-- <form class="answer__form vertical">
+                <textarea
+                  type="text"
+                  placeholder="Add a comment..."
+                  class="input"
+                ></textarea>
+                <button class="btn btn--big btn--reply">Update</button>
+              </form> -->
+            </div>
+            <div class="btn-container">
+            ${
+				reply.user.username === data.currentUser.username
+					? `<div class="btn-icon-box delete-box">
+                  <div class="icon icon--red icon--delete"></div>
+                  <a href="#" class="btn btn--small btn--red"
+                      >Delete</a
+                  >
+              </div>
+              <div class="btn-icon-box edit-box">
+                  <div class="icon icon--blue icon--edit"></div>
+                  <a href="#" class="btn btn--small btn--blue"
+                      >Edit</a
+                  >
+              </div>`
+					: `<div class="btn-icon-box reply-box">
+          <div class="icon icon--blue icon--reply"></div>
+          <a href="#" class="btn btn--small btn--blue"
+              >Reply</a>
+        </div>`
+			}
+            </div>
+          </div>
+          <div class="answer display-none">
+			<div class="answer__img">
+				<img
+					src="/images/avatars/image-juliusomo.png"
+					alt=""
+					class="answer__avatar--img"
+				/>
+			</div>
+			<form class="answer__form">
+				<textarea
+					type="text"
+					placeholder="Add a comment..."
+					class="input"
+					maxlength="255"
+				></textarea>
+				<button class="btn btn--big btn--reply">
+					Reply
+				</button>
+			</form>
+		</div>`;
+		});
+		const commentMarkup = `<div class="item">
+        <div class="comment answer-parent">
+            <div class="comment__vote">
+                <span class="comment__vote--button">+</span
+                ><span class="comment__vote--rating">0</span
+                ><span class="comment__vote--button">–</span>
+            </div>
+            <div class="comment__content">
+                <div class="comment__content--top">
+                    <div class="info-container">
+                        <div class="photo">
+                            <img
+                                src="${comment.user.image.png}"
+                                alt=""
+                            />
+                        </div>
+                        <span class="user">${comment.user.username}</span>
+                        <span class="time">${comment.createdAt}</span>
+                    </div>
+                </div>
+                <div class="comment__content--bottom">
+                    ${comment.content}
+                </div>
+            </div>
+            <div class="btn-container">
+            ${
+				comment.user.username === data.currentUser.username
+					? `<div class="btn-icon-box delete-box">
+                  <div class="icon icon--red icon--delete"></div>
+                  <a href="#" class="btn btn--small btn--red"
+                      >Delete</a
+                  >
+              </div>
+              <div class="btn-icon-box edit-box">
+                  <div class="icon icon--blue icon--edit"></div>
+                  <a href="#" class="btn btn--small btn--blue"
+                      >Edit</a
+                  >
+              </div>`
+					: `<div class="btn-icon-box reply-box">
+          <div class="icon icon--blue icon--reply"></div>
+          <a href="#" class="btn btn--small btn--blue"
+              >Reply</a>
+        </div>`
+			}
+			</div>
+        </div>
+        <!-- Reply form -->
+<div class="answer display-none">
+            <div class="answer__img">
+                <img
+                    src="${data.currentUser.image.png}"
+                    alt=""
+                    class="answer__avatar--img"
+                />
+            </div>
+            <form class="answer__form">
+                <textarea
+                    type="text"
+                    placeholder="Add a comment..."
+                    class="input"
+                ></textarea>
+                <button class="btn btn--big btn--reply">Reply</button>
+            </form>
+        </div>
+    </div>
+<div class="replies">
+<div class="replies__border"></div>
+<div class="replies__container">
+${replyMarkup}</div>
+</div>`;
+
+		itemContainer.insertAdjacentHTML("beforeend", commentMarkup);
+	});
+	const bottomTextarea = `<div class="answer">
+    <div class="answer__img">
+        <img
+            src="/images/avatars/image-juliusomo.png"
+            alt=""
+            class="answer__avatar--img"
+        />
+    </div>
+    <form class="answer__form">
+        <textarea
+            type="text"
+            placeholder="Add a comment..."
+            class="input"
+            maxlength="255"
+        ></textarea>
+        <button
+            class="btn btn--big btn--send"
+            type="submit"
+            value="check"
+        >
+            Send
+        </button>
+    </form>
+</div>`;
+	itemContainer.insertAdjacentHTML("beforeend", bottomTextarea);
+};
+
+//// Data from JSON file
+
+const getJSONData = async function () {
+	try {
+		const res = await fetch("data.json");
+		const data = await res.json();
+		console.log(data);
+
+		renderData(data);
+	} catch (err) {
+		console.log(err);
+	}
+};
+
+getJSONData();
 
 //// Auto-resizing textarea
 const inputFocus = function (input) {
