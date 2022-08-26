@@ -35,7 +35,7 @@ const renderData = function (data) {
                 <div class="info-container">
                   <div class="photo">
                     <img
-                      src="${reply.user.image.png}"
+                      src="../${reply.user.image.png}"
                       alt=""
                     />
                   </div>
@@ -88,7 +88,7 @@ const renderData = function (data) {
           <div class="answer display-none">
 			<div class="answer__img">
 				<img
-					src="/images/avatars/image-juliusomo.png"
+					src="../images/avatars/image-juliusomo.png"
 					alt=""
 					class="answer__avatar--img"
 				/>
@@ -118,7 +118,7 @@ const renderData = function (data) {
                     <div class="info-container">
                         <div class="photo">
                             <img
-                                src="${comment.user.image.png}"
+                                src="../${comment.user.image.png}"
                                 alt=""
                             />
                         </div>
@@ -156,7 +156,7 @@ const renderData = function (data) {
         <div class="answer display-none">
             <div class="answer__img">
                 <img
-                    src="${data.currentUser.image.png}"
+                    src="../${data.currentUser.image.png}"
                     alt=""
                     class="answer__avatar--img"
                 />
@@ -181,7 +181,7 @@ const renderData = function (data) {
 	const bottomTextarea = `<div class="answer">
     <div class="answer__img">
         <img
-            src="/images/avatars/image-juliusomo.png"
+            src="../images/avatars/image-juliusomo.png"
             alt=""
             class="answer__avatar--img"
         />
@@ -320,7 +320,7 @@ document.addEventListener("click", function (e) {
                     <div class="info-container">
                         <div class="photo">
                             <img
-                                src="/images/avatars/image-juliusomo.png"
+                                src="../images/avatars/image-juliusomo.png"
                                 alt=""
                             />
                         </div>
@@ -355,7 +355,7 @@ document.addEventListener("click", function (e) {
 <div class="answer display-none">
             <div class="answer__img">
                 <img
-                    src="/images/avatars/image-juliusomo.png"
+                    src="../images/avatars/image-juliusomo.png"
                     alt=""
                     class="answer__avatar--img"
                 />
@@ -387,7 +387,7 @@ document.addEventListener("click", function (e) {
             <div class="info-container">
               <div class="photo">
                 <img
-                  src="/images/avatars/image-juliusomo.png"
+                  src="../images/avatars/image-juliusomo.png"
                   alt=""
                 />
               </div>
@@ -437,7 +437,7 @@ document.addEventListener("click", function (e) {
 		}">
     <div class="answer__img">
         <img
-            src="/images/avatars/image-juliusomo.png"
+            src="../images/avatars/image-juliusomo.png"
             alt=""
             class="answer__avatar--img"
         />
