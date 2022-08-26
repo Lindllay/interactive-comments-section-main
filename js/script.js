@@ -320,7 +320,7 @@ document.addEventListener("click", function (e) {
                     <div class="info-container">
                         <div class="photo">
                             <img
-                                src=".${state.currentUser.image.png}"
+                                src="../images/avatars/image-juliusomo.png"
                                 alt=""
                             />
                         </div>
@@ -355,7 +355,7 @@ document.addEventListener("click", function (e) {
 <div class="answer display-none">
             <div class="answer__img">
                 <img
-                    src=".${state.currentUser.image.png}"
+                    src="../images/avatars/image-juliusomo.png"
                     alt=""
                     class="answer__avatar--img"
                 />
@@ -387,7 +387,7 @@ document.addEventListener("click", function (e) {
             <div class="info-container">
               <div class="photo">
                 <img
-                  src=".${state.currentUser.image.png}"
+                  src="../images/avatars/image-juliusomo.png"
                   alt=""
                 />
               </div>
@@ -437,7 +437,7 @@ document.addEventListener("click", function (e) {
 		}">
     <div class="answer__img">
         <img
-            src=".${state.currentUser.image.png}"
+            src="../images/avatars/image-juliusomo.png"
             alt=""
             class="answer__avatar--img"
         />
