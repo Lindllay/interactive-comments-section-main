@@ -281,12 +281,12 @@ body {
           mask: url(../images/icon-delete.svg) no-repeat center;
 }
 .icon--reply {
-  -webkit-mask: url(/images/icon-reply.svg) no-repeat center;
-          mask: url(/images/icon-reply.svg) no-repeat center;
+  -webkit-mask: url(../images/icon-reply.svg) no-repeat center;
+          mask: url(../images/icon-reply.svg) no-repeat center;
 }
 .icon--edit {
-  -webkit-mask: url(/images/icon-edit.svg) no-repeat center;
-          mask: url(/images/icon-edit.svg) no-repeat center;
+  -webkit-mask: url(../images/icon-edit.svg) no-repeat center;
+          mask: url(../images/icon-edit.svg) no-repeat center;
 }
 .icon--blue {
   background-color: hsl(238deg, 40%, 52%);
