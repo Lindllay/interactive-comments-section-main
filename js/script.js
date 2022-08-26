@@ -12,7 +12,7 @@ const timeout = function (item) {
 	setTimeout(function () {
 		item.nextElementSibling.remove();
 		item.remove();
-	}, 1000);
+	}, 500);
 };
 
 const renderData = function (data) {
@@ -35,7 +35,7 @@ const renderData = function (data) {
                 <div class="info-container">
                   <div class="photo">
                     <img
-                      src=".${reply.user.image.png}"
+                      src="${reply.user.image.png}"
                       alt=""
                     />
                   </div>
@@ -118,7 +118,7 @@ const renderData = function (data) {
                     <div class="info-container">
                         <div class="photo">
                             <img
-                                src=".${comment.user.image.png}"
+                                src="${comment.user.image.webp}"
                                 alt=""
                             />
                         </div>
