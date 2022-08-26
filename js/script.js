@@ -519,6 +519,10 @@ document.addEventListener("click", function (e) {
 
 		if (itemType === "comment") {
 			timeout(document.querySelector(`.item[data-id="${deleteID}"]`));
+			const target = state.comments.find(
+				(comment) => comment.id == deleteID
+			);
+
 			console.log(deleteID);
 		}
 		if (itemType === "reply") {
