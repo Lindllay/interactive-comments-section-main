@@ -28,6 +28,9 @@ body {
 
 .item {
   margin-bottom: 2rem;
+  transform-origin: 0% 100%;
+  -webkit-animation: append-animate 0.3s linear;
+          animation: append-animate 0.3s linear;
 }
 
 .comment,
@@ -67,6 +70,12 @@ body {
   display: flex;
   cursor: pointer;
   gap: 0.5rem;
+}
+
+.comment {
+  transform-origin: 0% 100%;
+  -webkit-animation: append-animate 0.3s linear;
+          animation: append-animate 0.3s linear;
 }
 
 .replies {
@@ -352,4 +361,26 @@ body {
 
 .display-none {
   display: none;
+}
+
+@-webkit-keyframes append-animate {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes append-animate {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }/*# sourceMappingURL=main.css.map */

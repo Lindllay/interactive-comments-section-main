@@ -1,6 +1,10 @@
 .item {
 	margin-bottom: 2rem;
+	transform-origin: 0% 100%;
+
+	animation: append-animate 0.3s linear;
 }
+
 .comment,
 .answer {
 	background-color: $color-white;
@@ -37,8 +41,14 @@
 	}
 }
 
+.comment {
+	transform-origin: 0% 100%;
+	animation: append-animate 0.3s linear;
+}
+
 .replies {
 	display: flex;
+
 	&__border {
 		border-left: 2px solid $color-light-gray;
 		height: auto;
