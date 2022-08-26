@@ -88,7 +88,7 @@ const renderData = function (data) {
           <div class="answer display-none">
 			<div class="answer__img">
 				<img
-					src="../images/avatars/image-juliusomo.png"
+					src="${state.currentUser.image.png}"
 					alt=""
 					class="answer__avatar--img"
 				/>
@@ -181,7 +181,7 @@ const renderData = function (data) {
 	const bottomTextarea = `<div class="answer">
     <div class="answer__img">
         <img
-            src="../images/avatars/image-juliusomo.png"
+            src="${state.currentUser.image.png}"
             alt=""
             class="answer__avatar--img"
         />
