@@ -35,7 +35,7 @@ const renderData = function (data) {
                 <div class="info-container">
                   <div class="photo">
                     <img
-                      src="../${reply.user.image.png}"
+                      src=".${reply.user.image.png}"
                       alt=""
                     />
                   </div>
@@ -118,7 +118,7 @@ const renderData = function (data) {
                     <div class="info-container">
                         <div class="photo">
                             <img
-                                src="../${comment.user.image.png}"
+                                src=".${comment.user.image.png}"
                                 alt=""
                             />
                         </div>
@@ -156,7 +156,7 @@ const renderData = function (data) {
         <div class="answer display-none">
             <div class="answer__img">
                 <img
-                    src="../${data.currentUser.image.png}"
+                    src=".${data.currentUser.image.png}"
                     alt=""
                     class="answer__avatar--img"
                 />
