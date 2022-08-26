@@ -118,7 +118,7 @@ const renderData = function (data) {
                     <div class="info-container">
                         <div class="photo">
                             <img
-                                src="${comment.user.image.webp}"
+                                src=".${comment.user.image.png}"
                                 alt=""
                             />
                         </div>
@@ -320,7 +320,7 @@ document.addEventListener("click", function (e) {
                     <div class="info-container">
                         <div class="photo">
                             <img
-                                src="../images/avatars/image-juliusomo.png"
+                                src=".${state.currentUser.image.png}"
                                 alt=""
                             />
                         </div>
@@ -355,7 +355,7 @@ document.addEventListener("click", function (e) {
 <div class="answer display-none">
             <div class="answer__img">
                 <img
-                    src="../images/avatars/image-juliusomo.png"
+                    src=".${state.currentUser.image.png}"
                     alt=""
                     class="answer__avatar--img"
                 />
@@ -387,7 +387,7 @@ document.addEventListener("click", function (e) {
             <div class="info-container">
               <div class="photo">
                 <img
-                  src="../images/avatars/image-juliusomo.png"
+                  src=".${state.currentUser.image.png}"
                   alt=""
                 />
               </div>
@@ -437,7 +437,7 @@ document.addEventListener("click", function (e) {
 		}">
     <div class="answer__img">
         <img
-            src="../images/avatars/image-juliusomo.png"
+            src=".${state.currentUser.image.png}"
             alt=""
             class="answer__avatar--img"
         />
