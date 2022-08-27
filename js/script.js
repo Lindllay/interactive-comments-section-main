@@ -8,11 +8,18 @@ let ID = 1;
 let deleteID;
 let itemType;
 
-const timeout = function (item) {
+const delayedRemove = function (item) {
 	setTimeout(function () {
 		item.nextElementSibling.remove();
 		item.remove();
 	}, 500);
+};
+
+const setLocalStorage = function () {
+	localStorage.setItem("state", JSON.stringify(state));
+};
+const getLocalStorage = function () {
+	return JSON.parse(localStorage.getItem("state"));
 };
 
 const renderData = function (data) {
@@ -214,7 +221,9 @@ const newComment = function (curUser, text) {
 		replies: [],
 		score: 0,
 		user: {
-			image: curUser.image.png,
+			image: {
+				png: curUser.image.png,
+			},
 			username: curUser.username,
 		},
 	};
@@ -233,7 +242,9 @@ const ReplyOnComment = function (data, text, elementID) {
 		replyingTo: "",
 		score: 0,
 		user: {
-			image: data.currentUser.image.png,
+			image: {
+				png: data.currentUser.image.png,
+			},
 			username: data.currentUser.username,
 		},
 	};
@@ -250,7 +261,6 @@ const ReplyOnReply = function (data, text, elementID) {
 			}
 		});
 	});
-	console.log(target);
 
 	const replyData = {
 		id: ID,
@@ -259,7 +269,9 @@ const ReplyOnReply = function (data, text, elementID) {
 		replyingTo: "",
 		score: 0,
 		user: {
-			image: data.currentUser.image.png,
+			image: {
+				png: data.currentUser.image.png,
+			},
 			username: data.currentUser.username,
 		},
 	};
@@ -271,7 +283,11 @@ const ReplyOnReply = function (data, text, elementID) {
 const getJSONData = async function () {
 	try {
 		const res = await fetch("data.json");
+
 		state = await res.json();
+		if (localStorage.getItem("state")) {
+			state = getLocalStorage();
+		}
 		console.log(state);
 
 		renderData(state);
@@ -459,7 +475,7 @@ document.addEventListener("click", function (e) {
 			itemContainer.insertAdjacentHTML("beforeend", formMarkup);
 
 			newComment(state.currentUser, text);
-			console.log(state);
+			setLocalStorage();
 		}
 
 		// REPLY ON COMMENT
@@ -476,6 +492,7 @@ document.addEventListener("click", function (e) {
 			const targetID = e.target.closest(".item").dataset.id;
 
 			ReplyOnComment(state, text, targetID);
+			setLocalStorage();
 
 			e.target.closest(".item").querySelector(".input").style.height =
 				"8rem";
@@ -493,6 +510,7 @@ document.addEventListener("click", function (e) {
 				e.target.closest(".answer").previousElementSibling.dataset.id;
 
 			ReplyOnReply(state, text, targetID);
+			setLocalStorage();
 		}
 	}
 
@@ -518,18 +536,31 @@ document.addEventListener("click", function (e) {
 		modal.classList.add("hidden");
 
 		if (itemType === "comment") {
-			timeout(document.querySelector(`.item[data-id="${deleteID}"]`));
-			const target = state.comments.find(
-				(comment) => comment.id == deleteID
+			delayedRemove(
+				document.querySelector(`.item[data-id="${deleteID}"]`)
 			);
 
-			console.log(deleteID);
+			const index = state.comments.findIndex(
+				(comment) => comment.id == deleteID
+			);
+			state.comments.splice(index, 1);
+			setLocalStorage();
 		}
 		if (itemType === "reply") {
-			timeout(
+			delayedRemove(
 				document.querySelector(`.answer-parent[data-id="${deleteID}"]`)
 			);
-			console.log(deleteID);
+			let commentItem;
+			state.comments.forEach((comment) => {
+				comment.replies.forEach((reply) => {
+					if (reply.id == deleteID) commentItem = comment;
+				});
+			});
+			const index = commentItem.replies.findIndex(
+				(reply) => reply.id == deleteID
+			);
+			commentItem.replies.splice(index, 1);
+			setLocalStorage();
 		}
 	}
 
