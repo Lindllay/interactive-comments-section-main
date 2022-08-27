@@ -341,6 +341,7 @@ document.addEventListener("click", function (e) {
                             />
                         </div>
                         <span class="user">juliusomo</span>
+                        <span class="you">you</span>
                         <span class="time">now</span>
                     </div>
                 </div>
@@ -619,6 +620,23 @@ document.addEventListener("click", function (e) {
 
 		input.insertAdjacentHTML("afterend", textboxMarkup);
 
+		if (!e.target.closest(".item")) {
+			const id = +e.target.closest(".answer-parent").dataset.id;
+			state.comments.forEach((comment) => {
+				comment.replies.forEach((reply) => {
+					if (reply.id == id) reply.content = inputValue;
+				});
+			});
+			setLocalStorage();
+		} else {
+			const id = +e.target.closest(".item").dataset.id;
+			state.comments.forEach((comment) => {
+				if (comment.id == id) comment.content = inputValue;
+			});
+
+			setLocalStorage();
+		}
+
 		input.remove();
 		btn.remove();
 	}
@@ -637,14 +655,29 @@ document.addEventListener("click", function (e) {
 		let rating = e.target.parentElement.querySelector(
 			".comment__vote--rating"
 		);
-		const btn = e.target.textContent;
-		// console.log(rating);
 
 		if (e.target === btnPlus) {
 			rating.textContent++;
 		}
 		if (e.target === btnMinus) {
 			rating.textContent--;
+		}
+
+		if (!e.target.closest(".item")) {
+			const id = +e.target.closest(".answer-parent").dataset.id;
+			state.comments.forEach((comment) => {
+				comment.replies.forEach((reply) => {
+					if (reply.id == id) reply.score = +rating.textContent;
+				});
+			});
+			setLocalStorage();
+		} else {
+			const id = +e.target.closest(".item").dataset.id;
+			state.comments.forEach((comment) => {
+				if (comment.id == id) comment.score = +rating.textContent;
+			});
+
+			setLocalStorage();
 		}
 	}
 });
