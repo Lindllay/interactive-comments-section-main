@@ -42,7 +42,7 @@ body {
   position: relative;
   margin-bottom: 2rem;
 }
-@media (max-width: 38em) {
+@media (max-width: 40em) {
   .comment,
 .answer {
     flex-direction: column;
@@ -58,7 +58,7 @@ body {
   right: 2.5rem;
   top: 2.5rem;
 }
-@media (max-width: 38em) {
+@media (max-width: 40em) {
   .comment .btn-container,
 .answer .btn-container {
     bottom: 2.2rem;
@@ -85,9 +85,10 @@ body {
   border-left: 2px solid hsl(223deg, 19%, 93%);
   height: auto;
   display: inline-block;
-  margin: 0 4rem;
+  margin: 0rem 4rem;
+  transform: translateY(-1rem);
 }
-@media (max-width: 38em) {
+@media (max-width: 40em) {
   .replies__border {
     margin: 0 1.5rem;
   }
@@ -105,7 +106,7 @@ body {
   color: hsl(238deg, 40%, 52%);
   margin-right: 2rem;
 }
-@media (max-width: 38em) {
+@media (max-width: 40em) {
   .comment__vote {
     flex-direction: row;
     order: 2;
@@ -165,7 +166,7 @@ body {
 .answer__img {
   height: 4rem;
 }
-@media (max-width: 38em) {
+@media (max-width: 40em) {
   .answer__img {
     position: absolute;
     bottom: 1.5rem;
@@ -180,7 +181,7 @@ body {
   flex: 1;
   align-items: flex-start;
 }
-@media (max-width: 38em) {
+@media (max-width: 40em) {
   .answer__form {
     flex-direction: column;
     width: 100%;
@@ -242,7 +243,7 @@ body {
 .btn--big:hover {
   background-color: hsl(239deg, 57%, 85%);
 }
-@media (max-width: 38em) {
+@media (max-width: 40em) {
   .btn--big {
     align-self: flex-end;
     margin-top: 1.5rem;
@@ -253,7 +254,7 @@ body {
   border-radius: 8px;
   font-size: 1.4rem;
 }
-@media (max-width: 38em) {
+@media (max-width: 40em) {
   .btn--form {
     padding: 1.5rem 2rem;
     font-size: 1.5rem;

@@ -8,6 +8,21 @@ let ID = 1;
 let deleteID;
 let itemType;
 
+const calcTimePassed = function (date1, date2) {
+	const milisec = Math.abs(date2 - date1);
+	const seconds = Math.trunc(milisec / 1000);
+	const minutes = Math.trunc(seconds / 60);
+	const hours = Math.trunc(minutes / 60);
+	const days = Math.trunc(hours / 24);
+	const weeks = Math.trunc(days / 7);
+
+	if (seconds < 60) return `${seconds} second${seconds > 1 ? "s" : ""} ago`;
+	if (minutes < 60) return `${minutes} minute${minutes > 1 ? "s" : ""} ago`;
+	if (hours < 24) return `${hours} hour${hours > 1 ? "s" : ""} ago`;
+	if (days < 7) return `${days} day${days > 1 ? "s" : ""} ago`;
+	if (weeks) return `${weeks} week${weeks > 1 ? "s" : ""} ago`;
+};
+
 const delayedRemove = function (item) {
 	setTimeout(function () {
 		item.nextElementSibling.remove();
@@ -53,7 +68,12 @@ const renderData = function (data) {
 							? `<span class="you">you</span>`
 							: ""
 					}
-                  <span class="time">${reply.createdAt}</span>
+                  <span class="time">${
+						typeof reply.createdAt == "number"
+							? calcTimePassed(new Date(), reply.createdAt)
+							: reply.createdAt
+					}
+					</span>
                 </div>
               </div>
               <div class="comment__content--bottom">
@@ -130,7 +150,12 @@ const renderData = function (data) {
                             />
                         </div>
                         <span class="user">${comment.user.username}</span>
-                        <span class="time">${comment.createdAt}</span>
+                        <span class="you">you</span>
+                        <span class="time">${
+							typeof comment.createdAt == "number"
+								? calcTimePassed(new Date(), comment.createdAt)
+								: comment.createdAt
+						}</span>
                     </div>
                 </div>
                 <div class="comment__content--bottom">
@@ -217,7 +242,7 @@ const newComment = function (curUser, text) {
 	const commentData = {
 		id: ID,
 		content: text,
-		createdAt: "now",
+		createdAt: +`${Date.now()}`,
 		replies: [],
 		score: 0,
 		user: {
@@ -238,7 +263,7 @@ const ReplyOnComment = function (data, text, elementID) {
 	const replyData = {
 		id: ID,
 		content: text,
-		createdAt: "now",
+		createdAt: +`${Date.now()}`,
 		replyingTo: "",
 		score: 0,
 		user: {
@@ -265,7 +290,7 @@ const ReplyOnReply = function (data, text, elementID) {
 	const replyData = {
 		id: ID,
 		content: text,
-		createdAt: "now",
+		createdAt: +`${Date.now()}`,
 		replyingTo: "",
 		score: 0,
 		user: {
@@ -411,7 +436,7 @@ document.addEventListener("click", function (e) {
 
               <span class="user">juliusomo</span
               ><span class="you">you</span>
-              <span class="time">2 days ago</span>
+              <span class="time">now</span>
             </div>
           </div>
           <div class="comment__content--bottom">
