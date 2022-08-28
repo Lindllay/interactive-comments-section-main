@@ -156,7 +156,13 @@ const renderData = function (data) {
                             />
                         </div>
                         <span class="user">${comment.user.username}</span>
-                        <span class="you">you</span>
+                        
+                        ${
+							comment.user.username === data.currentUser.username
+								? `<span class="you">you</span>`
+								: ""
+						}
+                        
                         <span class="time">${
 							typeof comment.createdAt == "number"
 								? calcTimePassed(new Date(), comment.createdAt)
