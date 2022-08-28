@@ -8,6 +8,10 @@ let ID = 1;
 let deleteID;
 let itemType;
 
+const sortByScore = function (comments) {
+	comments.sort((a, b) => (a.score > b.score ? -1 : 1));
+};
+
 const calcTimePassed = function (date1, date2) {
 	const milisec = Math.abs(date2 - date1);
 	const seconds = Math.trunc(milisec / 1000);
@@ -38,6 +42,8 @@ const getLocalStorage = function () {
 };
 
 const renderData = function (data) {
+	sortByScore(state.comments);
+
 	data.comments.forEach((comment) => {
 		ID = ID < comment.id ? comment.id : ID;
 		let replyMarkup = "";
@@ -240,11 +246,11 @@ const renderData = function (data) {
 const newComment = function (curUser, text) {
 	ID++;
 	const commentData = {
+		score: 0,
 		id: ID,
 		content: text,
 		createdAt: +`${Date.now()}`,
 		replies: [],
-		score: 0,
 		user: {
 			image: {
 				png: curUser.image.png,
@@ -261,11 +267,11 @@ const ReplyOnComment = function (data, text, elementID) {
 	const target = data.comments.find((comment) => comment.id == elementID);
 
 	const replyData = {
+		score: 0,
 		id: ID,
 		content: text,
 		createdAt: +`${Date.now()}`,
 		replyingTo: "",
-		score: 0,
 		user: {
 			image: {
 				png: data.currentUser.image.png,
@@ -288,11 +294,11 @@ const ReplyOnReply = function (data, text, elementID) {
 	});
 
 	const replyData = {
+		score: 0,
 		id: ID,
 		content: text,
 		createdAt: +`${Date.now()}`,
 		replyingTo: "",
-		score: 0,
 		user: {
 			image: {
 				png: data.currentUser.image.png,
