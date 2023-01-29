@@ -50,9 +50,7 @@ const renderData = function (data) {
 		comment.replies.forEach((reply) => {
 			ID = ID < reply.id ? reply.id : ID;
 
-			replyMarkup += `<div class="comment answer-parent" data-id="${
-				reply.id
-			}">
+			replyMarkup += `<div class="comment answer-parent" data-id="${reply.id}">
             <div class="comment__vote">
               <span class="comment__vote--button">+</span
               ><span class="comment__vote--rating">${reply.score}</span
@@ -70,15 +68,15 @@ const renderData = function (data) {
         
                   <span class="user">${reply.user.username}</span
                   >${
-						reply.user.username === data.currentUser.username
-							? `<span class="you">you</span>`
-							: ""
-					}
+										reply.user.username === data.currentUser.username
+											? `<span class="you">you</span>`
+											: ""
+									}
                   <span class="time">${
-						typeof reply.createdAt == "number"
-							? calcTimePassed(new Date(), reply.createdAt)
-							: reply.createdAt
-					}
+										typeof reply.createdAt == "number"
+											? calcTimePassed(new Date(), reply.createdAt)
+											: reply.createdAt
+									}
 					</span>
                 </div>
               </div>
@@ -97,8 +95,8 @@ const renderData = function (data) {
             </div>
             <div class="btn-container">
             ${
-				reply.user.username === data.currentUser.username
-					? `<div class="btn-icon-box delete-box delete-box--reply">
+							reply.user.username === data.currentUser.username
+								? `<div class="btn-icon-box delete-box delete-box--reply">
                   <div class="icon icon--red icon--delete"></div>
                   <a href="#" class="btn btn--small btn--red"
                       >Delete</a
@@ -110,12 +108,12 @@ const renderData = function (data) {
                       >Edit</a
                   >
               </div>`
-					: `<div class="btn-icon-box reply-box">
+								: `<div class="btn-icon-box reply-box">
           <div class="icon icon--blue icon--reply"></div>
           <a href="#" class="btn btn--small btn--blue"
               >Reply</a>
         </div>`
-			}
+						}
             </div>
           </div>
           <div class="answer display-none">
@@ -158,16 +156,16 @@ const renderData = function (data) {
                         <span class="user">${comment.user.username}</span>
                         
                         ${
-							comment.user.username === data.currentUser.username
-								? `<span class="you">you</span>`
-								: ""
-						}
+													comment.user.username === data.currentUser.username
+														? `<span class="you">you</span>`
+														: ""
+												}
                         
                         <span class="time">${
-							typeof comment.createdAt == "number"
-								? calcTimePassed(new Date(), comment.createdAt)
-								: comment.createdAt
-						}</span>
+													typeof comment.createdAt == "number"
+														? calcTimePassed(new Date(), comment.createdAt)
+														: comment.createdAt
+												}</span>
                     </div>
                 </div>
                 <div class="comment__content--bottom">
@@ -176,8 +174,8 @@ const renderData = function (data) {
             </div>
             <div class="btn-container">
             ${
-				comment.user.username === data.currentUser.username
-					? `<div class="btn-icon-box delete-box delete-box--comment">
+							comment.user.username === data.currentUser.username
+								? `<div class="btn-icon-box delete-box delete-box--comment">
                   <div class="icon icon--red icon--delete"></div>
                   <a href="#" class="btn btn--small btn--red"
                       >Delete</a
@@ -189,11 +187,11 @@ const renderData = function (data) {
                       >Edit</a
                   >
               </div>`
-					: `<div class="btn-icon-box reply-box">
+								: `<div class="btn-icon-box reply-box">
                         <div class="icon icon--blue icon--reply"></div>
                             <a href="#" class="btn btn--small btn--blue">Reply</a>
                         </div>`
-			}
+						}
 			        </div>
                  </div>
              <!-- Reply form -->
@@ -325,7 +323,6 @@ const getJSONData = async function () {
 		if (localStorage.getItem("state")) {
 			state = getLocalStorage();
 		}
-		console.log(state);
 
 		renderData(state);
 	} catch (err) {
@@ -486,9 +483,7 @@ document.addEventListener("click", function (e) {
         </div>
             </div>`;
 
-		const formMarkup = `<div class="answer ${
-			btnReply ? "display-none" : ""
-		}">
+		const formMarkup = `<div class="answer ${btnReply ? "display-none" : ""}">
     <div class="answer__img">
         <img
             src="${state.currentUser.image.png}"
@@ -532,8 +527,7 @@ document.addEventListener("click", function (e) {
 			ReplyOnComment(state, text, targetID);
 			setLocalStorage();
 
-			e.target.closest(".item").querySelector(".input").style.height =
-				"8rem";
+			e.target.closest(".item").querySelector(".input").style.height = "8rem";
 		}
 		// REPLY ON REPLY
 		if (e.target.closest(".replies__container")) {
@@ -574,9 +568,7 @@ document.addEventListener("click", function (e) {
 		modal.classList.add("hidden");
 
 		if (itemType === "comment") {
-			delayedRemove(
-				document.querySelector(`.item[data-id="${deleteID}"]`)
-			);
+			delayedRemove(document.querySelector(`.item[data-id="${deleteID}"]`));
 
 			const index = state.comments.findIndex(
 				(comment) => comment.id == deleteID
@@ -638,15 +630,11 @@ document.addEventListener("click", function (e) {
 			textbox.insertAdjacentHTML("afterend", formMarkup);
 			textbox.remove();
 
-			inputFocus(
-				e.target.closest(".answer-parent").querySelector(".input")
-			);
+			inputFocus(e.target.closest(".answer-parent").querySelector(".input"));
 		}
 	}
 	if (e.target.classList.contains("btn--update")) {
-		const input = e.target
-			.closest(".answer-parent")
-			.querySelector(".input");
+		const input = e.target.closest(".answer-parent").querySelector(".input");
 		const inputValue = input.value;
 		const btn = e.target;
 
@@ -689,9 +677,7 @@ document.addEventListener("click", function (e) {
 		const btnPlus = e.target.parentElement.firstElementChild;
 		const btnMinus = e.target.parentElement.lastElementChild;
 
-		let rating = e.target.parentElement.querySelector(
-			".comment__vote--rating"
-		);
+		let rating = e.target.parentElement.querySelector(".comment__vote--rating");
 
 		if (e.target === btnPlus) {
 			rating.textContent++;
